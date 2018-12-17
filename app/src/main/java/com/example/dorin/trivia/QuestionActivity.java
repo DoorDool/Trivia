@@ -23,6 +23,7 @@ public class QuestionActivity extends AppCompatActivity implements QuestionHelpe
     int question_number;
     String name;
     ArrayList<Question> questionList;
+    ArrayList<String> answerGuess;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +54,14 @@ public class QuestionActivity extends AppCompatActivity implements QuestionHelpe
         questionHelper.getQuestion(this);
     }
 
+
     @Override
     public void gotQuestion(ArrayList<Question> questionList) {
 
         this.questionList = questionList;
         text.setText(questionList.get(0).getQuestion());
 
-        ArrayList<String> answerGuess = new ArrayList<String>(Arrays.asList(questionList.get(0).getIncorrect().get(0),
+        answerGuess = new ArrayList<String>(Arrays.asList(questionList.get(0).getIncorrect().get(0),
                 questionList.get(0).getIncorrect().get(1), questionList.get(0).getIncorrect().get(2), questionList.get(0).getAnswer()));
         Collections.shuffle(answerGuess);
 
